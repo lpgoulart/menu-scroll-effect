@@ -21,6 +21,65 @@
             background: red;
             position: fixed;
             top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scrolled {
+            animation: scroll-down .5s 1 forwards;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        ul li::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: black;
+            margin-top: 20px;
+            transition: .3s all;
+            transform: translateX(-110%);
+            padding-bottom: 1px;
+        }
+        ul li:hover::after {
+            transform: translateX(0%);
+        }
+        li {
+            padding-top: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            width: 100%;
+        }
+        li span {
+            padding-left: 30px;
+            width: 100%;
+        }
+        @keyframes scroll-down {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0%);
+            }
+        }
+
+        /* .header {
+            height: auto;
+            background: red;
+            position: fixed;
+            top: 0;
             width: 100%;
 
             display: flex;
@@ -69,7 +128,7 @@
             to {
                 transform: translateY(0%);
             }
-        }
+        } */
     </style>
 
 </head>
@@ -98,11 +157,11 @@
     </div>
 
     <script>
-        var menu = document.getElementById("menu")
-        window.addEventListener("scroll", (event) => {
-            let scroll = this.scrollY;
-            scroll !== 0 ? menu.classList.add("scrolled") : menu.classList.remove("scrolled")
-        });
+        // var menu = document.getElementById("menu")
+        // window.addEventListener("scroll", (event) => {
+        //     let scroll = this.scrollY;
+        //     scroll !== 0 ? menu.classList.add("scrolled") : menu.classList.remove("scrolled")
+        // });
     </script>
 </body>
 </html>
