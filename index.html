@@ -22,8 +22,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            /* border-bottom: 1px black solid; */
-            box-shadow: 0 .5px 10px 1px black;
+            box-shadow: 0 .5px 10px 1px rgba(0, 0, 0, .3);
 
             display: flex;
             justify-content: space-around;
@@ -94,19 +93,25 @@
                 position: fixed;
                 top: 0;
                 right: 0;
-                width: 250px;
+                width: 0px;
                 height: 100%;
-                box-shadow: .5px 0 10px 1px black;
+                box-shadow: .5px 0 10px 1px rgba(0, 0, 0, .3);
 
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: flex-start;
+
+                transition: 1s;
+            }
+            .no-width {
+                width: 250px!important;
             }
 
             .header footer {
                 padding: 20px;
                 display: initial;
+                white-space: nowrap;
             }
 
             .scrolled {
@@ -147,10 +152,39 @@
                 overflow: hidden;
                 cursor: pointer;
                 width: 100%;
+                white-space: nowrap;
             }
             li span {
                 padding-left: 30px;
                 width: 100%;
+            }
+
+            #close {
+                display: inline-block;
+                cursor: pointer;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+
+            .bar1, .bar2, .bar3 {
+                width: 35px;
+                height: 5px;
+                background-color: #333;
+                margin: 6px 0;
+                transition: 0.4s;
+            }
+
+            .change .bar1 {
+                -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+                transform: rotate(-45deg) translate(-9px, 6px);
+            }
+
+            .change .bar2 {opacity: 0;}
+
+            .change .bar3 {
+                -webkit-transform: rotate(45deg) translate(-8px, -8px);
+                transform: rotate(45deg) translate(-8px, -8px);
             }
         }
     </style>
@@ -159,6 +193,13 @@
 <body>
     <div class="content">
         <div class="header" id="menu">
+            
+            <div id="close">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            
             <div></div>
             <ul>
                 <li>
@@ -176,6 +217,11 @@
                         Menu option third
                     </span>
                 </li>
+                <li>
+                    <span>
+                        Menu other
+                    </span>
+                </li>
             </ul>
             <footer>
                 Copyrights &copy; Leonardo Goulart
@@ -184,10 +230,17 @@
     </div>
 
     <script>
-        var menu = document.getElementById("menu")
+        const menu = document.getElementById("menu")
+        const close = document.getElementById("close")
+        var open = false
         window.addEventListener("scroll", (event) => {
             let scroll = this.scrollY;
             scroll !== 0 ? menu.classList.add("scrolled") : menu.classList.remove("scrolled")
+        });
+
+        close.addEventListener("click", (event) => {
+            menu.classList.toggle("no-width")
+            close.classList.toggle("change");
         });
     </script>
 </body>
