@@ -18,10 +18,12 @@
 
         .header {
             height: auto;
-            background: red;
+            background: transparent;
             position: fixed;
             top: 0;
             width: 100%;
+            /* border-bottom: 1px black solid; */
+            box-shadow: 0 .5px 10px 1px black;
 
             display: flex;
             justify-content: space-around;
@@ -29,7 +31,7 @@
         }
 
         .scrolled {
-            animation: scroll-down .5s 1 forwards;
+            animation: scroll-down .8s 1 forwards;
         }
 
         ul {
@@ -48,8 +50,23 @@
             transition: .3s all;
             transform: translateX(-110%);
         }
-        ul li:hover::after {
+        ul li:first-child:hover::after {
             transform: translateX(0%);
+        }
+        ul li:hover::after {
+            transform: translateX(15%);
+        }
+        ul li span::before {
+            content: "*";
+            position: relative;
+            top: 3px;
+            padding-right: 12px;
+        }
+        ul li:first-child span::before {
+            content: "";
+            position: relative;
+            top: 3px;
+            padding-right: 0;
         }
         li {
             padding-top: 20px;
@@ -74,12 +91,12 @@
         @media screen and (max-width: 768px) {
             .header {
                 height: auto;
-                background: red;
                 position: fixed;
                 top: 0;
                 right: 0;
                 width: 250px;
                 height: 100%;
+                box-shadow: .5px 0 10px 1px black;
 
                 display: flex;
                 flex-direction: column;
@@ -119,6 +136,12 @@
             ul li:hover::after {
                 transform: translateX(0%);
             }
+            ul li span::before {
+                content: "";
+                position: relative;
+                top: 3px;
+                padding-right: 0;
+            }
             li {
                 padding-top: 20px;
                 overflow: hidden;
@@ -145,12 +168,12 @@
                 </li>
                 <li>
                     <span>
-                        Menu
+                        Menu option 2
                     </span>
                 </li>
                 <li>
                     <span>
-                        Menu
+                        Menu option third
                     </span>
                 </li>
             </ul>
