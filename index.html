@@ -87,10 +87,15 @@
             }
         }
 
+        #close {
+            display: none;
+        }
+
         @media screen and (max-width: 768px) {
             .header {
                 height: auto;
                 position: fixed;
+                z-index: 999;
                 top: 0;
                 right: 0;
                 width: 0px;
@@ -106,12 +111,21 @@
             }
             .no-width {
                 width: 250px!important;
+                opacity: 1;
             }
-
+            .logo {
+                padding-left: 30px;
+                position: relative;
+                padding-top: 30px;
+                /* background: red; */
+                width: 78%;
+            }
             .header footer {
                 padding: 20px;
                 display: initial;
                 white-space: nowrap;
+                /* position: absolute;
+                bottom: 0px; */
             }
 
             .scrolled {
@@ -200,7 +214,9 @@
                 <div class="bar3"></div>
             </div>
             
-            <div></div>
+            <div class="logo">
+                LOGO
+            </div>
             <ul>
                 <li>
                     <span>
